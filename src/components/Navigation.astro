@@ -114,8 +114,9 @@ const links = [
 
   // Close menu when clicking outside
   document.addEventListener('click', (event) => {
-    const isClickInsideMenu = mobileMenu.contains(event.target);
-    const isClickOnButton = mobileMenuButton.contains(event.target);
+    const target = event.target as Node;
+    const isClickInsideMenu = mobileMenu.contains(target);
+    const isClickOnButton = mobileMenuButton.contains(target);
     
     if (isMenuOpen && !isClickInsideMenu && !isClickOnButton) {
       toggleMenu();

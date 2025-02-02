@@ -126,8 +126,11 @@ const questions = [
     }
   }
 
-  function scrollToContact() {
+function scrollToContact() {
     const contactSection = document.getElementById('contact');
+    const assessmentComplete = document.getElementById('assessment-complete');
+    const assessmentDataInput = document.getElementById('assessment-data');
+    if (!(assessmentDataInput instanceof HTMLInputElement)) return;
     const answers = {};
     
     // Collect all answers
@@ -139,6 +142,10 @@ const questions = [
 
     // Store answers in sessionStorage
     sessionStorage.setItem('assessmentAnswers', JSON.stringify(answers));
+    if (assessmentComplete && assessmentDataInput) {
+      assessmentComplete.classList.remove('hidden');
+      assessmentDataInput.value = JSON.stringify(answers);
+    }
 
     // Scroll to contact form
     contactSection.scrollIntoView({ behavior: 'smooth' });
