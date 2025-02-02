@@ -1,0 +1,219 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+
+const logoVariants = [
+    // Square Profile Images
+    {
+        name: "Profile Large",
+        size: 400,
+        format: "PNG",
+        bgColor: "white",
+        aspectRatio: "1:1",
+        usage: "LinkedIn, GitHub"
+    },
+    {
+        name: "Profile Small",
+        size: 180,
+        format: "PNG",
+        bgColor: "white",
+        aspectRatio: "1:1",
+        usage: "X (Twitter)"
+    },
+    // Social Headers/Banners
+    {
+        name: "X Banner",
+        width: 1500,
+        height: 500,
+        format: "PNG",
+        bgColor: "white",
+        aspectRatio: "3:1",
+        usage: "X (Twitter) Header"
+    },
+    {
+        name: "LinkedIn Banner",
+        width: 1584,
+        height: 396,
+        format: "PNG",
+        bgColor: "white",
+        aspectRatio: "4:1",
+        usage: "LinkedIn Company Page"
+    },
+    {
+        name: "GitHub Social",
+        width: 1280,
+        height: 640,
+        format: "PNG",
+        bgColor: "white",
+        aspectRatio: "2:1",
+        usage: "GitHub Social Preview"
+    }
+];
+---
+
+<Layout title="Media Kit - amotivv">
+    <Navigation />
+    <main>
+        <section class="pt-32 md:pt-40 pb-24 bg-off-white">
+            <div class="container mx-auto px-6 md:px-8">
+                <div class="max-w-4xl mx-auto">
+                    <h1
+                        class="text-4xl md:text-5xl font-medium mb-6 text-secondary"
+                    >
+                        Media Kit
+                    </h1>
+                    <p class="text-dark-gray/60 mb-16">
+                        Download official amotivv logos and brand assets
+                    </p>
+
+                    <!-- Logo Preview -->
+                    <div class="bg-white rounded-2xl p-12 mb-16 text-center">
+                        <div
+                            class="text-4xl font-medium mb-8 inline-block font-mono"
+                        >
+                            amotivv<span class="text-primary">.</span>
+                        </div>
+                        <p class="text-dark-gray/60 text-sm">
+                            Font: IBM Plex Mono<br />
+                            Primary Color: #4D7EFF
+                        </p>
+                    </div>
+
+                    <!-- Logo Downloads -->
+                    <div class="grid gap-8">
+                        {
+                            logoVariants.map((variant) => (
+                                <div class="bg-white rounded-2xl p-8 flex items-center justify-between">
+                                    <div>
+                                        <h2 class="text-xl font-medium text-secondary mb-2">
+                                            {variant.name}
+                                        </h2>
+                                        <p class="text-dark-gray/60 text-sm">
+                                            {variant.width || variant.size}×
+                                            {variant.height || variant.size} •{" "}
+                                            {variant.format} • {variant.bgColor}{" "}
+                                            background
+                                            {variant.usage && (
+                                                <>
+                                                    <br />
+                                                    <span class="text-primary/60">
+                                                        {variant.usage}
+                                                    </span>
+                                                </>
+                                            )}
+                                        </p>
+                                    </div>
+                                    <button
+                                        onclick={`generateLogo(${
+                                            variant.width || variant.size
+                                        }, ${variant.height || variant.size})`}
+                                        class="inline-flex items-center gap-2 px-6 py-3 bg-primary/5 hover:bg-primary/10 text-primary rounded-xl transition-colors"
+                                    >
+                                        <svg
+                                            class="w-5 h-5"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="1.5"
+                                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                                            />
+                                        </svg>
+                                        Download
+                                    </button>
+                                </div>
+                            ))
+                        }
+                    </div>
+
+                    <!-- Usage Guidelines -->
+                    <div class="mt-16">
+                        <h2 class="text-2xl font-medium text-secondary mb-4">
+                            Usage Guidelines
+                        </h2>
+                        <ul class="space-y-3 text-dark-gray/60">
+                            <li>• Use the logo in its original form without modifications</li>
+                            <li>• Maintain proper spacing around the logo</li>
+                            <li>• Do not alter the logo colors or typography</li>
+                            <li>• For questions about usage, contact ai@amotivv.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <Footer />
+
+    <!-- Hidden canvas for generating logos -->
+    <canvas id="logoCanvas" style="display: none;"></canvas>
+
+    <script>
+        declare global {
+            interface Window {
+                generateLogo: (width: number, height: number) => void;
+            }
+        }
+
+        document.fonts.ready.then(() => {
+            const generateLogo = (width: number, height: number = width) => {
+                const canvas = document.getElementById(
+                    "logoCanvas",
+                ) as HTMLCanvasElement;
+                const ctx = canvas.getContext("2d");
+
+                // Use device pixel ratio for higher resolution
+                const scale = window.devicePixelRatio || 2;
+                const scaledWidth = width * scale;
+                const scaledHeight = height * scale;
+
+                // Set canvas size with scaling
+                canvas.width = scaledWidth;
+                canvas.height = scaledHeight;
+
+                // Scale all drawing operations
+                ctx.scale(scale, scale);
+
+                // Clear canvas
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, width, height);
+
+                // Calculate font size based on height
+                const fontSize = width === height 
+                    ? Math.floor(Math.min(width, height) * 0.2)  // Square format (profile images)
+                    : Math.floor(height * 0.4); 
+
+                // Set text style
+                ctx.font = `500 ${fontSize}px "IBM Plex Mono"`;
+                ctx.fillStyle = "#1F2937";
+
+                // Calculate text position
+                const text = "amotivv";
+                const dot = ".";
+                const textMetrics = ctx.measureText(text);
+                const dotMetrics = ctx.measureText(dot);
+
+                const x = (width - (textMetrics.width + dotMetrics.width)) / 2;
+                const y = height / 2 + fontSize / 3;
+
+                // Draw text
+                ctx.fillText(text, x, y);
+                ctx.fillStyle = "#4D7EFF";
+                ctx.fillText(dot, x + textMetrics.width, y);
+
+                // Convert to PNG with maximum quality
+                const dataUrl = canvas.toDataURL("image/png", 1.0);
+                const link = document.createElement("a");
+                link.download = `amotivv-logo-${width}x${height}.png`;
+                link.href = dataUrl;
+                link.click();
+            };
+
+            // Make function available globally
+            window.generateLogo = generateLogo;
+        });
+    </script>
+</Layout>
