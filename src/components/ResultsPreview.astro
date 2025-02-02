@@ -1,0 +1,42 @@
+---
+const insights = [
+  {
+    title: "Readiness Score",
+    description: "Get a detailed analysis of your organization's AI readiness across key dimensions.",
+    icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+  },
+  {
+    title: "Implementation Roadmap",
+    description: "Receive a customized timeline for AI adoption based on your business priorities.",
+    icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+  },
+  {
+    title: "Risk Analysis",
+    description: "Understand potential challenges and mitigation strategies specific to your context.",
+    icon: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+  }
+];
+---
+<section class="py-32 bg-off-white">
+  <div class="container mx-auto">
+    <div class="max-w-3xl mx-auto text-center mb-20">
+      <span class="text-primary font-medium mb-4 block text-sm tracking-wider uppercase">Assessment Results</span>
+      <h2 class="text-heading font-medium mb-6 text-secondary">What You'll Learn</h2>
+      <p class="text-dark-gray/80 text-lg">Our comprehensive assessment provides actionable insights to guide your AI journey.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {insights.map(insight => (
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300">
+          <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={insight.icon} />
+            </svg>
+          </div>
+          <h3 class="text-lg font-medium text-secondary mb-3">{insight.title}</h3>
+          <p class="text-dark-gray/70 text-sm leading-relaxed">{insight.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

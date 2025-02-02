@@ -1,0 +1,132 @@
+---
+const questions = [
+  {
+    title: "Data Readiness",
+    description: "Evaluate your current data infrastructure and quality",
+    options: ["Limited Data", "Basic Records", "Structured Data", "Advanced Analytics"]
+  },
+  {
+    title: "Problem Complexity",
+    description: "Assess the nature of your operational challenges",
+    options: ["Static/Simple", "Moderate", "Dynamic", "Highly Complex"]
+  },
+  {
+    title: "Resource Availability",
+    description: "Consider your budget and team capabilities",
+    options: ["Minimal", "Limited", "Moderate", "Extensive"]
+  },
+  {
+    title: "Implementation Timeline",
+    description: "Determine your desired implementation speed",
+    options: ["Immediate", "3-6 Months", "6-12 Months", "12+ Months"]
+  }
+];
+---
+<section class="py-32 bg-off-white" id="assessment">
+  <div class="container mx-auto">
+    <div class="max-w-3xl mx-auto text-center mb-20">
+      <span class="text-primary font-medium mb-4 block text-sm tracking-wider uppercase">Quick Assessment</span>
+      <h2 class="text-heading font-medium mb-6 text-secondary">Evaluate Your AI Readiness</h2>
+      <p class="text-dark-gray/80 text-lg">Answer a few key questions to understand whether AI might be right for your business.</p>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+      <!-- Progress Bar -->
+      <div class="mb-12 max-w-xs mx-auto">
+        <div class="flex justify-between mb-2">
+          {questions.map((_, index) => (
+            <div class="flex flex-col items-center">
+              <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-medium">
+                {index + 1}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="h-2 bg-primary/10 rounded-full relative">
+          <div class="progress-bar absolute left-0 top-0 h-full bg-primary rounded-full transition-all duration-300" style="width: 25%"></div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {questions.map(question => (
+          <div class="bg-white rounded-2xl p-8">
+            <h3 class="text-lg font-medium text-secondary mb-2">{question.title}</h3>
+            <p class="text-dark-gray/70 text-sm mb-6">{question.description}</p>
+            <div class="space-y-3">
+              {question.options.map(option => (
+                <label class="flex items-center p-3 bg-off-white rounded-xl cursor-pointer hover:bg-primary/5 transition-colors group">
+                  <input 
+                    type="radio" 
+                    name={question.title.toLowerCase().replace(/\s+/g, '-')} 
+                    value={option.toLowerCase().replace(/\s+/g, '-')}
+                    class="w-4 h-4 text-primary focus:ring-primary"
+                  >
+                  <span class="ml-3 text-dark-gray/80 text-sm group-hover:text-primary transition-colors">{option}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="mt-12 text-center">
+        <button 
+          id="get-results-btn"
+          class="inline-flex items-center px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled
+        >
+          Get Your Assessment Results
+          <svg class="ml-2 w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ questions }}>
+  const radioButtons = document.querySelectorAll('input[type="radio"]');
+  const progressBar = document.querySelector('.progress-bar');
+  const getResultsBtn = document.getElementById('get-results-btn');
+  
+  function updateProgress() {
+    const totalQuestions = questions.length;
+    const answeredQuestions = new Set(
+      Array.from(document.querySelectorAll('input[type="radio"]:checked'))
+        .map(input => input.name)
+    ).size;
+    
+    const progress = (answeredQuestions / totalQuestions) * 100;
+    progressBar.style.width = `${progress}%`;
+
+    // Enable button only when all questions are answered
+    if (answeredQuestions === totalQuestions) {
+      getResultsBtn.disabled = false;
+    }
+  }
+
+  function scrollToContact() {
+    const contactSection = document.getElementById('contact');
+    const answers = {};
+    
+    // Collect all answers
+    questions.forEach(question => {
+      const name = question.title.toLowerCase().replace(/\s+/g, '-');
+      const selectedOption = document.querySelector(`input[name="${name}"]:checked`);
+      answers[name] = selectedOption ? selectedOption.value : null;
+    });
+
+    // Store answers in sessionStorage
+    sessionStorage.setItem('assessmentAnswers', JSON.stringify(answers));
+
+    // Scroll to contact form
+    contactSection.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  radioButtons.forEach(radio => {
+    radio.addEventListener('change', updateProgress);
+  });
+
+  getResultsBtn.addEventListener('click', scrollToContact);
+</script>

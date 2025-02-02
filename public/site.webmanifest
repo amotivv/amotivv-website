@@ -1,0 +1,24 @@
+{
+  "name": "amotivv - Expert AI Consulting",
+  "short_name": "amotivv",
+  "description": "Expert AI consulting to help businesses navigate artificial intelligence adoption. Get personalized assessments, implementation roadmaps, and continuous support for your AI journey.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#4D7EFF",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait",
+  "categories": ["business", "productivity", "technology"],
+  "lang": "en-US"
+}

@@ -1,0 +1,67 @@
+---
+const steps = [
+  {
+    title: "Discovery",
+    description: "We map your business challenges to the evolving landscape of AI capabilities, identifying opportunities for meaningful impact.",
+    icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+  },
+  {
+    title: "Assessment",
+    description: "Our continuous evaluation ensures you're neither too early nor too late in adopting the right AI solutions.",
+    icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+  },
+  {
+    title: "Analysis",
+    description: "We identify the perfect intersection of AI maturity and your business readiness, maximizing return while minimizing risk.",
+    icon: "M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
+  },
+  {
+    title: "Continuous Support",
+    description: "As AI capabilities expand, we keep you informed and prepared, ensuring your implementation evolves with the technology.",
+    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+  }
+];
+---
+<section class="py-32 bg-white" id="process">
+  <div class="container mx-auto">
+    <div class="max-w-3xl mx-auto text-center mb-20">
+      <span class="text-primary font-medium mb-4 block text-sm tracking-wider uppercase">Our Process</span>
+      <h2 class="text-heading font-medium mb-6 text-secondary">Continuous AI Innovation Support</h2>
+      <p class="text-dark-gray/80 text-lg">We transform the rapid pace of AI advancement from a challenge into your strategic advantage, keeping you ahead of the curve without the overhead.</p>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto">
+      <!-- Connecting Lines -->
+      <div class="absolute top-1/2 left-0 right-0 h-0.5 bg-primary/10 -translate-y-1/2 hidden lg:block"></div>
+      <div class="absolute top-1/2 left-[25%] right-[25%] h-0.5 bg-primary/10 -translate-y-1/2 hidden md:block lg:hidden"></div>
+      
+      <!-- Arrow Indicators -->
+      {Array(3).fill(null).map((_, index) => (
+        <div class="absolute top-1/2 -translate-y-1/2 hidden lg:block" style={`left: ${(index + 1) * 25 - 2}%`}>
+          <div class="w-4 h-4 bg-primary/10 rotate-45 transform origin-center"></div>
+        </div>
+      ))}
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {steps.map((step, index) => (
+          <div class="group relative">
+            <div class="bg-off-white rounded-2xl p-8 hover:bg-white hover:shadow-lg transition-all duration-300">
+              <div class="relative mb-8">
+                <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={step.icon} />
+                  </svg>
+                </div>
+                <div class="absolute top-0 right-0 w-6 h-6 bg-primary/5 text-primary rounded-lg flex items-center justify-center text-sm font-medium">
+                  {index + 1}
+                </div>
+              </div>
+              <h3 class="text-lg font-medium text-secondary mb-3">{step.title}</h3>
+              <p class="text-dark-gray/70 text-sm leading-relaxed">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

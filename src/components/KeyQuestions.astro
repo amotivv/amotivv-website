@@ -1,0 +1,27 @@
+---
+const questions = [
+  "Do you face challenges that change dynamically?",
+  "How well is your data organized and centralized?",
+  "Are your current solutions scalable?",
+  "What's your budget for technology implementation?",
+  "How complex are your operational processes?",
+  "Are you ready for digital transformation?"
+];
+---
+<section class="py-20 bg-white" id="questions">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center mb-12">Key Questions to Ask Yourself</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      {questions.map(question => (
+        <div class="bg-gray-50 p-6 rounded-lg">
+          <h3 class="text-lg font-semibold mb-2">{question}</h3>
+          <div class="mt-4 space-x-4">
+            <button class="text-sm px-4 py-2 rounded bg-purple-100 text-purple-900 hover:bg-purple-200">Yes</button>
+            <button class="text-sm px-4 py-2 rounded bg-gray-200 text-gray-700 hover:bg-gray-300">No</button>
+            <button class="text-sm px-4 py-2 rounded bg-gray-200 text-gray-700 hover:bg-gray-300">Not Sure</button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
