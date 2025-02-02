@@ -21,6 +21,27 @@ const industries = [
     icon: "M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"
   },
 ];
+
+const techLogos = [
+  {
+    name: "OpenAI",
+  },
+  {
+    name: "Anthropic",
+  },
+  {
+    name: "DeepSeek",
+  },
+  {
+    name: "Huggingface",
+  },
+  {
+    name: "Ollama",
+  },
+  {
+    name: "Replicate",
+  }
+];
 ---
 <section class="relative min-h-screen flex items-center bg-off-white pt-40">
   <div class="container mx-auto">
@@ -30,6 +51,24 @@ const industries = [
         <span class="text-primary"> AI Complexity</span>
         <span class="text-secondary"> with Confidence</span>
       </h1>
+
+      <div class="mb-32 pt-12 border-t border-dark-gray/10">
+        <p class="text-sm text-dark-gray/60 mb-12">Expertise across leading AI platforms and frontier labs</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 items-center justify-items-center max-w-3xl mx-auto">
+          {techLogos.map(tech => (
+            <div class="group relative flex items-center justify-center">
+              <img 
+                src={`/logos/${tech.name.toLowerCase()}-2.svg`}
+                alt={`${tech.name} Logo`}
+                class="h-6 md:h-8 w-auto opacity-50 group-hover:opacity-100 transition-opacity duration-300"
+              />
+              <span class="absolute -bottom-6 text-xs text-dark-gray/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {tech.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
       
       <p class="text-xl text-dark-gray mb-6 font-light leading-relaxed">
         AI capabilities evolve daily. While you focus on your business, we track the innovations that matter, ensuring you implement the right solutions at exactly the right time.
