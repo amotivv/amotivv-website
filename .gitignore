@@ -20,3 +20,28 @@ pnpm-debug.log*
 
 # Local Netlify folder
 .netlify
+
+# ... existing code ...
+
+# Development environments
+.vscode/
+.codesandbox/
+.bolt/
+.astro/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# ... existing code ...
