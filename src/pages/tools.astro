@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+const tools = [
+  {
+    name: "OpenGraph Generator",
+    description: "Generate stunning OpenGraph images and meta tags for your website. Optimize your social media presence with our easy-to-use tool.",
+    url: "https://amotivv-tools-opengraph.netlify.app/",
+    features: [
+      "Custom Templates",
+      "Meta Tag Generator",
+      "Multiple Formats"
+    ],
+    icon: "M4 5.5h16A2.5 2.5 0 0122.5 8v8a2.5 2.5 0 01-2.5 2.5H4A2.5 2.5 0 011.5 16V8A2.5 2.5 0 014 5.5z" // Simple image icon path
+  }
+];
+---
+
+<Layout title="Free Tools - amotivv, inc.">
+  <Navigation />
+  <main>
+    <section class="pt-32 md:pt-40 pb-24 bg-off-white">
+      <div class="container mx-auto px-6 md:px-8">
+        <div class="max-w-4xl mx-auto">
+          <h1 class="text-4xl md:text-5xl font-medium mb-6 text-secondary">Free Tools</h1>
+          <p class="text-dark-gray/60 mb-16">A collection of free tools to help you work more effectively.</p>
+          
+          <div class="grid gap-8">
+            {tools.map(tool => (
+              <a 
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer" 
+                class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300"
+              >
+                <div class="flex items-start gap-6">
+                  <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d={tool.icon} />
+                    </svg>
+                  </div>
+                  
+                  <div class="flex-1">
+                    <h2 class="text-xl font-medium text-secondary mb-2 group-hover:text-primary transition-colors">
+                      {tool.name}
+                    </h2>
+                    <p class="text-dark-gray/60 mb-4">
+                      {tool.description}
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-2">
+                      {tool.features.map(feature => (
+                        <span class="px-3 py-1 bg-primary/5 text-primary/80 rounded-full text-sm">
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <svg 
+                    class="w-6 h-6 text-dark-gray/30 group-hover:text-primary transition-colors" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path 
+                      stroke-linecap="round" 
+                      stroke-linejoin="round" 
+                      stroke-width="2" 
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
