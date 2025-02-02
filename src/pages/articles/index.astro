@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const articles = await getCollection('articles');
+---
+
+<Layout title="Articles - amotivv">
+  <Navigation />
+  <main>
+    <section class="pt-32 md:pt-40 pb-24 bg-off-white">
+      <div class="container mx-auto px-6 md:px-8">
+        <div class="max-w-4xl mx-auto">
+          <h1 class="text-4xl md:text-5xl font-medium mb-6 text-secondary">Articles</h1>
+          <p class="text-dark-gray/60 mb-16">Insights and guides on AI implementation, digital strategy and identity</p>
+          
+          <div class="grid gap-8">
+            {articles.map(article => (
+              <a 
+                href={`/articles/${article.slug}`}
+                class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300"
+              >
+                <div class="flex items-start gap-6">
+                  <div class="flex-1">
+                    <h2 class="text-xl font-medium text-secondary mb-2 group-hover:text-primary transition-colors">
+                      {article.data.title}
+                    </h2>
+                    <p class="text-dark-gray/60 mb-4">
+                      {article.data.description}
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-2">
+                      {article.data.tags.map(tag => (
+                        <span class="px-3 py-1 bg-primary/5 text-primary/80 rounded-full text-sm">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <svg 
+                    class="w-6 h-6 text-dark-gray/30 group-hover:text-primary transition-colors" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path 
+                      stroke-linecap="round" 
+                      stroke-linejoin="round" 
+                      stroke-width="2" 
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

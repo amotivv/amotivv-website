@@ -3,6 +3,29 @@ export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            fontSize: '1rem',
+            h1: {
+              fontSize: '2.25rem',
+            },
+            h2: {
+              fontSize: '1.875rem',
+            },
+            h3: {
+              fontSize: '1.5rem',
+            },
+            p: {
+              fontSize: '1rem',
+              lineHeight: '1.75',
+            },
+            li: {
+              fontSize: '1rem',
+            }
+          }
+        }
+      },
       colors: {
         primary: '#4D7EFF',
         secondary: '#111111',
@@ -34,5 +57,7 @@ export default {
       }
     }
   },
-  plugins: []
+  plugins: [
+    require('@tailwindcss/typography')
+  ]
 }

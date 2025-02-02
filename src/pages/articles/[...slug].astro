@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map(article => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+type Props = {
+  article: CollectionEntry<'articles'>;
+};
+const { Content } = await article.render();
+---
+
+<Layout title={`${article.data.title} - amotivv`}>
+  <Navigation />
+  <main>
+    <article class="pt-32 md:pt-40 pb-24 bg-off-white">
+      <div class="container mx-auto px-6 md:px-8">
+        <div class="max-w-3xl mx-auto">
+          <!-- Title and metadata stay outside the white container -->
+          <h1 class="text-4xl md:text-5xl font-medium mb-6 text-secondary">
+            {article.data.title}
+          </h1>
+    
+          <div class="flex flex-wrap gap-2 mb-8">
+            {article.data.tags.map(tag => (
+              <span class="px-3 py-1 bg-primary/5 text-primary/80 rounded-full text-sm">
+                {tag}
+              </span>
+            ))}
+          </div>
+          
+          <div class="flex items-center gap-4 mb-12 pb-8 border-b border-light-gray">
+            <img 
+              src={article.data.author.avatar || '/avatars/default.svg'} 
+              alt={article.data.author.name}
+              class="w-10 h-10 rounded-full"
+              onerror="this.src='/avatars/default.svg'"
+            />
+            <div>
+              <div class="font-medium text-secondary">{article.data.author.name}</div>
+              <div class="text-sm text-dark-gray/60">{article.data.author.title}</div>
+            </div>
+            <time class="text-sm text-dark-gray/60 ml-auto">
+              {new Date(article.data.publishDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </time>
+          </div>
+    
+          <!-- Article content in white container -->
+          <div class="bg-white rounded-2xl p-8 md:p-12 shadow-sm">
+            <div class="prose max-w-none text-dark-gray/80">
+              <Content />
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>
