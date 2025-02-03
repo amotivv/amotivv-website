@@ -5,6 +5,9 @@ import Footer from '../../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
 const articles = await getCollection('articles');
+const sortedArticles = articles.sort((a, b) => {
+  return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
+});
 ---
 
 <Layout title="Articles - amotivv">
@@ -17,7 +20,7 @@ const articles = await getCollection('articles');
           <p class="text-dark-gray/60 mb-16">Insights and guides on AI implementation, digital strategy and identity</p>
           
           <div class="grid gap-8">
-            {articles.map(article => (
+            {sortedArticles.map(article => (
               <a 
                 href={`/articles/${article.slug}`}
                 class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300"
