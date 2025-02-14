@@ -1,13 +1,49 @@
 ---
 interface Props {
 	title: string;
+	description?: string;
+	image?: string;
+	canonicalURL?: string;
+	keywords?: string[];
+	type?: 'website' | 'article';
+	publishDate?: string;
+	modifiedDate?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title,
+	description = "AI consulting to help businesses navigate artificial intelligence adoption. Get personalized assessments, implementation roadmaps, and continuous support for your AI journey.",
+	image = "https://storage.googleapis.com/amotivv-public/og-image-amotivv2.png",
+	canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+	keywords = ["AI consulting", "artificial intelligence", "business intelligence", "AI implementation", "technology consulting", "digital transformation", "AI readiness", "AI assessment"],
+	type = "website",
+	publishDate,
+	modifiedDate
+} = Astro.props;
 
-const description = "AI consulting to help businesses navigate artificial intelligence adoption. Get personalized assessments, implementation roadmaps, and continuous support for your AI journey.";
 const siteUrl = "https://amotivv.com";
-const ogImage = `https://storage.googleapis.com/amotivv-public/og-image-amotivv2.png`;
+const ogImage = image;
+
+// Structured Data
+const structuredData = {
+	"@context": "https://schema.org",
+	"@type": type === 'article' ? 'Article' : 'WebSite',
+	"url": canonicalURL,
+	"name": title,
+	"description": description,
+	...(type === 'article' && {
+		"datePublished": publishDate,
+		"dateModified": modifiedDate || publishDate,
+		"publisher": {
+			"@type": "Organization",
+			"name": "Amotivv",
+			"logo": {
+				"@type": "ImageObject",
+				"url": `${siteUrl}/favicon.svg`
+			}
+		}
+	})
+};
 ---
 
 <!doctype html>
@@ -20,9 +56,10 @@ const ogImage = `https://storage.googleapis.com/amotivv-public/og-image-amotivv2
 		<title>{title}</title>
 		<meta name="title" content={title} />
 		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
 		
 		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
+		<meta property="og:type" content={type} />
 		<meta property="og:url" content={siteUrl} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
@@ -38,7 +75,10 @@ const ogImage = `https://storage.googleapis.com/amotivv-public/og-image-amotivv2
 		<!-- Additional SEO -->
 		<meta name="robots" content="index, follow" />
 		<meta name="author" content="amotivv" />
-		<meta name="keywords" content="AI consulting, artificial intelligence, business intelligence, AI implementation, technology consulting, digital transformation, AI readiness, AI assessment" />
+		<meta name="keywords" content={keywords.join(', ')} />
+
+		<!-- Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 		
 		<!-- Favicon -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />

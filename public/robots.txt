@@ -1,0 +1,10 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://amotivv.com/sitemap-index.xml
+
+# Prevent crawling of admin and client portal areas
+Disallow: /admin/
+Disallow: /client-portal/
