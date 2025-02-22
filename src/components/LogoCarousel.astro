@@ -1,0 +1,39 @@
+---
+const logos = [
+  { name: 'Anthropic', file: 'anthropic-2.svg' },
+  { name: 'Deepseek', file: 'deepseek-2.svg' },
+  { name: 'Hugging Face', file: 'huggingface-2.svg' },
+  { name: 'Ollama', file: 'ollama-2.svg' },
+  { name: 'OpenAI', file: 'openai-2.svg' },
+  { name: 'Replicate', file: 'replicate-2.svg' }
+];
+---
+
+<div class="relative w-full h-full flex items-center justify-center">
+  <div class="relative w-48 h-48">
+    {logos.map((logo, index) => (
+      <img 
+        src={`/logos/${logo.file}`}
+        alt={`${logo.name} Logo`}
+        class="logo absolute inset-0 w-full h-full object-contain"
+        style={`animation-delay: ${index * 4}s`}
+      />
+    ))}
+  </div>
+</div>
+
+<style>
+  .logo {
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fade 24s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes fade {
+    0% { opacity: 0; transform: scale(0.95); }
+    4% { opacity: 1; transform: scale(1); }
+    12.5% { opacity: 1; transform: scale(1); }
+    16.5% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 0; transform: scale(0.95); }
+  }
+</style>

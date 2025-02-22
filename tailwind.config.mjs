@@ -43,6 +43,35 @@ export default {
       borderRadius: {
         'xl': '16px',
         '2xl': '20px'
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        'float-slow': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-5px)' },
+        },
+        'pulse-slow': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.5' },
+        },
+        fade: {
+          '0%, 100%': { opacity: '0.1' },
+          '50%': { opacity: '0.3' },
+        },
+        'fade-delayed': {
+          '0%, 100%': { opacity: '0.05' },
+          '50%': { opacity: '0.2' },
+        }
+      },
+      animation: {
+        'float': 'float 3s ease-in-out infinite',
+        'float-slow': 'float-slow 4s ease-in-out infinite',
+        'pulse-slow': 'pulse-slow 3s ease-in-out infinite',
+        'fade': 'fade 4s ease-in-out infinite',
+        'fade-delayed': 'fade-delayed 4s ease-in-out infinite 2s'
       }
     },
     container: {
