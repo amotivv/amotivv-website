@@ -4,7 +4,7 @@ description: "Learn how businesses of all sizes can implement powerful AI search
 publishDate: "2025-02-27"
 author:
   name: "Jason Smith"
-  title: "AI Consultant"
+  title: "Principal Solutions Architect"
   avatar: "/avatars/default.svg"
 tags: ["AI", "Business Intelligence", "Search Technology", "Data Solutions", "Cost Optimization"]
 ---

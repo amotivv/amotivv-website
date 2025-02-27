@@ -4,7 +4,7 @@ description: "Learn how we solved the fundamental challenge of AI amnesia with M
 publishDate: "2025-02-24"
 author:
   name: "Jason Smith"
-  title: "AI Consultant"
+  title: "Principal Solutions Architect"
   avatar: "/avatars/default.svg"
 tags: ["AI", "Vector Search", "Knowledge Management", "LLM Tools", "Semantic Memory"]
 ---

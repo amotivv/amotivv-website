@@ -4,7 +4,7 @@ description: "An innovative approach to radar-based human detection that leverag
 publishDate: "2025-02-14"
 author:
   name: "Jason Smith"
-  title: "AI Consultant"
+  title: "Principal Solutions Architect"
   avatar: "/avatars/default.svg"
 tags: ["AI", "Radar", "Security", "Machine Learning", "Edge Computing"]
 ---

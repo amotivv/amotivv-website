@@ -4,7 +4,7 @@ description: "How speculative decoding highlights untapped potential in existing
 publishDate: "2025-02-18"
 author:
   name: "Jason Smith"
-  title: "AI Consultant"
+  title: "Principal Solutions Architect"
   avatar: "/avatars/default.svg"
 tags: ["AI", "Performance", "LLM", "Optimization", "Machine Learning"]
 ---

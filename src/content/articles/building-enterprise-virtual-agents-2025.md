@@ -4,7 +4,7 @@ description: "Learn how the Model Context Protocol enables standardized virtual 
 publishDate: "2025-02-22"
 author:
   name: "Jason Smith"
-  title: "AI Consultant"
+  title: "Principal Solutions Architect"
   avatar: "/avatars/default.svg"
 tags: ["AI", "Virtual Agents", "Integration", "MCP", "Enterprise"]
 ---

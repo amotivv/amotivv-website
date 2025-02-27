@@ -4,7 +4,7 @@ description: "Exploring how AI can be leveraged to streamline data movement acro
 publishDate: "2025-02-19"
 author:
   name: "Jason Smith"
-  title: "AI Consultant"
+  title: "Principal Solutions Architect"
   avatar: "/avatars/default.svg"
 tags: ["AI", "Productivity", "Automation", "Workflow"]
 ---

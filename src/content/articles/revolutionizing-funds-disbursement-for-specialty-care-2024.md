@@ -4,7 +4,7 @@ description: "Discover how Smartgive.ai transforms the allocation of donated fun
 publishDate: "2024-03-03"
 author:
   name: "Jason Smith"
-  title: "Generative Media Strategist"
+  title: "Principal Solutions Architect"
   avatar: "/avatars/default.svg"
 tags: ["Mental Health", "Nonprofit", "Healthcare", "FinTech", "Transparency"]
 ---
