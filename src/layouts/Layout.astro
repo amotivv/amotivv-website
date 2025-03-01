@@ -31,19 +31,57 @@ const structuredData = {
 	"url": canonicalURL,
 	"name": title,
 	"description": description,
+	"image": ogImage,
 	...(type === 'article' && {
+		"headline": title,
 		"datePublished": publishDate,
 		"dateModified": modifiedDate || publishDate,
 		"publisher": {
 			"@type": "Organization",
-			"name": "Amotivv",
+			"name": "amotivv",
 			"logo": {
 				"@type": "ImageObject",
 				"url": `${siteUrl}/favicon.svg`
 			}
+		},
+		"author": {
+			"@type": "Person",
+			"name": "Jason Smith",
+			"url": siteUrl
+		},
+		"keywords": keywords.join(', '),
+		"mainEntityOfPage": {
+			"@type": "WebPage",
+			"@id": canonicalURL
 		}
 	})
 };
+
+// Breadcrumbs structured data for articles
+const breadcrumbsStructuredData = type === 'article' ? {
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	"itemListElement": [
+		{
+			"@type": "ListItem",
+			"position": 1,
+			"name": "Home",
+			"item": siteUrl
+		},
+		{
+			"@type": "ListItem",
+			"position": 2,
+			"name": "Articles",
+			"item": `${siteUrl}/articles`
+		},
+		{
+			"@type": "ListItem",
+			"position": 3,
+			"name": title.replace(' - amotivv', ''),
+			"item": canonicalURL
+		}
+	]
+} : null;
 ---
 
 <!doctype html>
@@ -79,6 +117,9 @@ const structuredData = {
 
 		<!-- Structured Data -->
 		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+		{breadcrumbsStructuredData && 
+			<script type="application/ld+json" set:html={JSON.stringify(breadcrumbsStructuredData)} />
+		}
 		
 		<!-- Favicon -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
