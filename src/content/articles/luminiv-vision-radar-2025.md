@@ -1,7 +1,7 @@
 ---
 title: "Luminiv Vision Radar: Advancing On-Device ML for Enhanced Radar Detection"
 description: "An innovative approach to radar-based human detection that leverages custom machine learning models to process real-time radar metadata, delivering superior accuracy and privacy-conscious security solutions."
-publishDate: "2025-02-14"
+publishDate: "2025-02-14T12:00:00Z"
 author:
   name: "Jason Smith"
   title: "Principal Solutions Architect"

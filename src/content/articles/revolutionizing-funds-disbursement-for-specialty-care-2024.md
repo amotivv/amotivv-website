@@ -1,7 +1,7 @@
 ---
 title: "Smartgive.ai: Revolutionizing Fund Disbursement in Mental Health and Specialty Healthcare"
 description: "Discover how Smartgive.ai transforms the allocation of donated funds, ensuring complete transparency and direct support for mental health and specialty healthcare services."
-publishDate: "2024-03-03"
+publishDate: "2024-03-03T12:00:00Z"
 author:
   name: "Jason Smith"
   title: "Principal Solutions Architect"

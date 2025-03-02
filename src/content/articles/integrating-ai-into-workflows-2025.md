@@ -1,7 +1,7 @@
 ---
 title: "Enhancing Daily Workflows with AI Integration"
 description: "Exploring how AI can be leveraged to streamline data movement across tools, improving efficiency and productivity."
-publishDate: "2025-02-19"
+publishDate: "2025-02-19T12:00:00Z"
 author:
   name: "Jason Smith"
   title: "Principal Solutions Architect"

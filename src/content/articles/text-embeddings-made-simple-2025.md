@@ -1,7 +1,7 @@
 ---
 title: "Text Embeddings Made Simple: How Your Business Can Benefit from Smarter AI Search"
 description: "Learn how businesses of all sizes can implement powerful AI search using text embeddings without specialized hardware or excessive costs."
-publishDate: "2025-02-27"
+publishDate: "2025-02-27T12:00:00Z"
 author:
   name: "Jason Smith"
   title: "Principal Solutions Architect"

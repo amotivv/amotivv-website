@@ -1,7 +1,7 @@
 ---
 title: "Accelerated Learning and Development with LLMs and Plugins"
 description: "Discover how combining LLMs with specialized plugins creates a powerful workflow that dramatically accelerates learning, development, and knowledge preservation."
-publishDate: "2025-02-28"
+publishDate: "2025-02-28T12:00:00Z"
 author:
   name: "Jason Smith"
   title: "Principal Solutions Architect"

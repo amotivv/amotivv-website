@@ -1,7 +1,7 @@
 ---
 title: "Unlocking AI Efficiency: Speculative Decoding and the Future of Consumer-Level LLM Optimization"
 description: "How speculative decoding highlights untapped potential in existing AI technologies and optimizations for smaller models."
-publishDate: "2025-02-18"
+publishDate: "2025-02-18T12:00:00Z"
 author:
   name: "Jason Smith"
   title: "Principal Solutions Architect"

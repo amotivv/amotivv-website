@@ -6,7 +6,12 @@ import { getCollection } from 'astro:content';
 
 const articles = await getCollection('articles');
 const sortedArticles = articles.sort((a, b) => {
-  return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
+  // Parse dates using UTC to ensure consistent sorting
+  const parseDate = (dateStr) => {
+    const [year, month, day] = dateStr.split('-').map(num => parseInt(num, 10));
+    return new Date(Date.UTC(year, month-1, day)).getTime();
+  };
+  return parseDate(b.data.publishDate) - parseDate(a.data.publishDate);
 });
 ---
 

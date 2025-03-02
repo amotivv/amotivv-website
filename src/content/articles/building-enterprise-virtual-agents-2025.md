@@ -1,7 +1,7 @@
 ---
 title: "Building Enterprise-Grade Virtual Agents: Overcoming Integration Challenges with Modern Standards"
 description: "Learn how the Model Context Protocol enables standardized virtual agent implementations, and how amotivv helps organizations navigate this emerging standard for enterprise systems integration."
-publishDate: "2025-02-22"
+publishDate: "2025-02-22T12:00:00Z"
 author:
   name: "Jason Smith"
   title: "Principal Solutions Architect"

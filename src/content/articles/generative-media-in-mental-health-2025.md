@@ -1,7 +1,7 @@
 ---
 title: "Innovative Therapies: Integrating Generative and Interactive Media in Mental Health Counseling"
 description: "A comprehensive exploration of current and experimental tools that utilize generative and interactive media in outpatient mental health therapy, with a focus on identity issues and technology addiction."
-publishDate: "2025-02-03"
+publishDate: "2025-02-03T12:00:00Z"
 author:
   name: "Jason Smith"
   title: "Principal Solutions Architect"

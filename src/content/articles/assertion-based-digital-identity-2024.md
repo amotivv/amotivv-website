@@ -1,7 +1,7 @@
 ---
 title: "Assertion-Based Digital Identity: A Comprehensive Overview"
 description: "An in-depth analysis of Assertion-Based Digital Identity (ABDI) and its implications for digital trust and security."
-publishDate: "2024-06-24"
+publishDate: "2024-06-24T12:00:00Z"
 author:
   name: "Russell Moore"
   title: "Digital Identity Strategist"

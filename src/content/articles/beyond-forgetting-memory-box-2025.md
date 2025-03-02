@@ -1,7 +1,7 @@
 ---
 title: "Beyond Forgetting: Why We Built Memory Box at amotivv"
 description: "Learn how we solved the fundamental challenge of AI amnesia with Memory Box, a system that gives AI tools persistent, searchable memory without requiring specialized hardware."
-publishDate: "2025-02-24"
+publishDate: "2025-02-24T12:00:00Z"
 author:
   name: "Jason Smith"
   title: "Principal Solutions Architect"
